@@ -27,6 +27,7 @@ _DEFAULT_ACCELS = [
     ('rotate(90)', '<Primary>Right'),
     ('rotate(-90)', '<Primary>Left'),
     ('save', '<Primary>s'),
+    #('save-hard', '<Primary><Secondary>s'),
     ('save-as', '<Primary><Shift>s'),
     ('export-selection(2)', '<Primary>e'),
     ('export-all', '<Primary><Shift>e'),

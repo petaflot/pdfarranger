@@ -255,6 +255,9 @@ class PdfArranger(Gtk.Application):
 
         self.add_arguments()
 
+        if len(sys.argv) == 2:
+            self.singlefile = sys.argv[1]
+
     def add_arguments(self):
         self.set_option_context_summary(_(
            "PDF Arranger is a small python-gtk application, which helps the "
@@ -1104,7 +1107,11 @@ class PdfArranger(Gtk.Application):
         chooser.destroy()
 
     def on_action_save(self, _action, _param, _unknown):
-        self.save_or_choose()
+        try:
+            savemode = GLib.Variant('i', 0) # Save all pages in a single document.
+            self.save(savemode, self.singlefile)
+        except AttributeError:
+            self.save_or_choose()
 
     def save_or_choose(self):
         """Saves to the previously exported file or shows the export dialog if
